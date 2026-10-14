@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="gl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Formulario de entrega de podcasts do concurso Ecos do Alén de Onda Novoneyra.">
+  <title>Ecos do Alén · Entrega de podcasts</title>
+  <style>
+    :root{
+      --ink:#062d2c;
+      --night:#071c28;
+      --night2:#0b3340;
+      --cream:#fff6df;
+      --paper:#fffdf7;
+      --orange:#ff8616;
+      --orange2:#ef6f0f;
+      --muted:#64645f;
+      --danger:#8a1f11;
+      --line:#ddd2bc;
+      --shadow:0 12px 28px rgba(6,45,44,.10);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      line-height:1.5;
+      background:linear-gradient(180deg,#fbf4e5 0%,#edf4ef 100%);
+    }
+    .wrap{width:min(980px,calc(100% - 28px));margin:0 auto}
+    header{padding:28px 0 10px}
+    .hero{
+      min-height:270px;
+      padding:30px 30px 105px;
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      color:var(--cream);
+      background:
+        radial-gradient(circle at 84% 22%, #f6dda2 0 42px, transparent 43px),
+        linear-gradient(145deg,var(--night) 0%,var(--night2) 100%);
+      box-shadow:var(--shadow);
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:auto -10% 18px -10%;
+      height:78px;
+      opacity:.28;
+      background:
+        linear-gradient(150deg,transparent 0 18%,rgba(255,255,255,.10) 18.5% 19%,transparent 19.5% 100%),
+        linear-gradient(30deg,transparent 0 60%,rgba(255,255,255,.08) 60.5% 61%,transparent 61.5% 100%);
+      pointer-events:none;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      left:7%;
+      right:7%;
+      bottom:26px;
+      height:4px;
+      border-radius:999px;
+      background:linear-gradient(
+        90deg,
+        transparent 0 4%,
+        var(--orange) 4% 12%,
+        transparent 12% 15%,
+        var(--orange) 15% 19%,
+        transparent 19% 21%,
+        var(--orange) 21% 24%,
+        transparent 24% 27%,
+        var(--orange) 27% 37%,
+        transparent 37% 42%,
+        var(--orange) 42% 45%,
+        transparent 45% 47%,
+        var(--orange) 47% 53%,
+        transparent 53% 55%,
+        var(--orange) 55% 58%,
+        transparent 58% 63%,
+        var(--orange) 63% 73%,
+        transparent 73% 76%,
+        var(--orange) 76% 79%,
+        transparent 79% 81%,
+        var(--orange) 81% 85%,
+        transparent 85% 88%,
+        var(--orange) 88% 96%,
+        transparent 96% 100%
+      );
+      opacity:.72;
+      pointer-events:none;
+    }
+    .hero-copy{position:relative;z-index:2;max-width:760px}
+    .eyebrow{
+      display:inline-block;
+      padding:7px 11px;
+      background:var(--orange);
+      color:#17120d;
+      border-radius:999px;
+      font-weight:900;
+      font-size:.88rem;
+      letter-spacing:.03em;
+      text-transform:uppercase;
+    }
+    .hero h1{
+      margin:14px 0 8px;
+      font-size:clamp(3rem,8vw,5.8rem);
+      line-height:.88;
+      letter-spacing:-.055em;
+      color:#fff8e8;
+    }
+    .hero h1 span{color:var(--orange)}
+    .subtitle{
+      margin:0;
+      max-width:700px;
+      font-size:clamp(1rem,2.2vw,1.18rem);
+      color:#f7ecd5;
+    }
+    .deadline{
+      margin-top:0;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      background:#fff;
+      color:var(--ink);
+      border-radius:11px;
+      padding:9px 12px;
+      font-weight:900;
+    }
+    .hero-actions{
+      margin-top:18px;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:10px;
+      position:relative;
+      z-index:3;
+    }
+    .hero-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      width:100%;
+    }
+    .hero-links a{
+      max-width:100%;
+    }
+    .motto{
+      text-align:center;
+      margin:12px auto 0;
+      color:var(--ink);
+      font-size:.92rem;
+      font-weight:800;
+    }
+    main{padding:8px 0 60px}
+    .card{
+      background:var(--paper);
+      border:1px solid rgba(6,45,44,.10);
+      border-radius:var(--radius);
+      padding:24px;
+      margin:18px 0;
+      box-shadow:var(--shadow);
+    }
+    .card h2{margin:0 0 8px;font-size:1.35rem}
+    .lead{margin:.2rem 0 .8rem}
+    .note{
+      border-left:5px solid var(--orange);
+      background:#fff0d8;
+      padding:12px 14px;
+      border-radius:10px;
+      color:#3f2a11;
+      margin:10px 0;
+    }
+    form{margin-top:18px}
+    fieldset{border:0;padding:0;margin:0 0 26px}
+    legend{
+      width:100%;
+      font-size:1.28rem;
+      font-weight:900;
+      margin-bottom:13px;
+      padding-bottom:9px;
+      border-bottom:3px solid #efe5d0;
+    }
+    .section-intro{
+      margin:-2px 0 13px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:#f4f0e5;
+      color:#43514d;
+      font-size:.93rem;
+    }
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .full{grid-column:1/-1}
+    label{display:block;font-weight:780;margin:0 0 6px}
+    .hint{font-size:.9rem;color:var(--muted);margin:5px 0 0}
+    input[type="text"],input[type="email"],input[type="tel"],input[type="url"],textarea,select{
+      width:100%;
+      border:1.5px solid #cfc6b5;
+      background:#fff;
+      padding:12px 13px;
+      border-radius:12px;
+      font:inherit;
+      color:#142321;
+      outline:none;
+      transition:.15s border-color,.15s box-shadow;
+    }
+    textarea{min-height:112px;resize:vertical}
+    input:focus,textarea:focus,select:focus{
+      border-color:var(--orange);
+      box-shadow:0 0 0 4px rgba(255,134,22,.14);
+    }
+    .choices{display:grid;gap:9px}
+    .choice{
+      display:flex;
+      gap:11px;
+      align-items:flex-start;
+      background:#fff;
+      border:1px solid #e1d7c4;
+      border-radius:13px;
+      padding:12px 13px;
+    }
+    .choice input{margin-top:4px;transform:scale(1.15);accent-color:var(--orange2)}
+    .required::after{content:" *";color:var(--danger)}
+    .conditional{
+      display:none;
+      margin-top:13px;
+      padding:15px;
+      border-radius:14px;
+      border:1px dashed #d49a48;
+      background:#fff8ea;
+    }
+    .conditional.show{display:block}
+    .subquestion{margin-top:14px}
+    .must{
+      margin:0 0 12px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:#eaf5ef;
+      color:#174936;
+      font-weight:700;
+      font-size:.92rem;
+    }
+    .optional-box{
+      border:1px solid #ddd2bd;
+      background:#faf7ef;
+      border-radius:14px;
+      padding:15px;
+    }
+    details{
+      background:#f8f5ec;
+      border:1px solid #e2dbc9;
+      border-radius:12px;
+      padding:11px 13px;
+      margin-top:13px;
+    }
+    summary{cursor:pointer;font-weight:850}
+    .legal{font-size:.93rem;color:#3e4845}
+    .contact-chip{
+      display:inline-block;
+      padding:3px 8px;
+      border-radius:999px;
+      background:#e5f0eb;
+      font-weight:800;
+    }
+    .actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    button{
+      border:0;
+      background:var(--orange);
+      color:#17120d;
+      padding:14px 22px;
+      border-radius:12px;
+      font:inherit;
+      font-weight:950;
+      cursor:pointer;
+      box-shadow:0 7px 16px rgba(255,134,22,.25);
+    }
+    .status{font-size:.92rem;color:var(--muted)}
+    footer{padding:0 0 42px;color:#40534f;font-size:.9rem;text-align:center}
+    footer a{color:var(--ink);font-weight:800}
+    .honeypot{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+    @media(max-width:700px){
+      .grid{grid-template-columns:1fr}
+      .full{grid-column:auto}
+      .hero{padding:24px 20px 105px;min-height:300px}
+      .hero h1{font-size:3.6rem}
+      .card{padding:18px}
+    }
+  
+    .help-jump{
+      display:inline-flex;
+      margin:0;
+      padding:9px 12px;
+      border:1px solid rgba(255,255,255,.28);
+      border-radius:11px;
+      color:var(--cream);
+      text-decoration:none;
+      font-weight:800;
+      font-size:.92rem;
+      background:rgba(255,255,255,.07);
+    }
+    .help-jump:hover{background:rgba(255,255,255,.13)}
+    .help-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      margin-top:14px;
+    }
+    .help-card{
+      border:1px solid #e1d7c4;
+      background:#fff;
+      border-radius:15px;
+      padding:16px;
+    }
+    .help-card h3{margin:0 0 7px;font-size:1.08rem}
+    .help-card p{margin:.35rem 0}
+    .video-wrap{
+      position:relative;
+      width:100%;
+      aspect-ratio:16/9;
+      margin:12px 0 10px;
+      overflow:hidden;
+      border-radius:12px;
+      background:#071c28;
+    }
+    .video-wrap iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+    }
+    .help-link{
+      display:inline-block;
+      margin-top:8px;
+      padding:8px 11px;
+      border-radius:9px;
+      background:#eef5f0;
+      color:var(--ink);
+      font-weight:850;
+      text-decoration:none;
+    }
+    .help-link:hover{background:#e2eee7}
+    .steps{
+      margin:.5rem 0 0;
+      padding-left:1.25rem;
+    }
+    .privacy-tip{
+      margin-top:12px;
+      padding:11px 13px;
+      border-left:5px solid var(--orange);
+      border-radius:10px;
+      background:#fff4e3;
+    }
+    @media(max-width:760px){
+      .help-grid{grid-template-columns:1fr}
+    }
+
+  
+    .rights-jump{
+      display:inline-flex;
+      margin:0;
+      padding:9px 12px;
+      border:1px solid rgba(255,255,255,.28);
+      border-radius:11px;
+      color:var(--cream);
+      text-decoration:none;
+      font-weight:850;
+      font-size:.92rem;
+      background:rgba(255,134,22,.14);
+    }
+    .rights-jump:hover{background:rgba(255,134,22,.22)}
+    .rights-alert{
+      border-left:5px solid var(--orange2);
+      background:#fff0d9;
+      padding:13px 15px;
+      border-radius:11px;
+      margin:12px 0;
+    }
+    .license-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin-top:14px;
+    }
+    .license-card{
+      background:#fff;
+      border:1px solid #e2d8c5;
+      border-radius:13px;
+      padding:14px;
+    }
+    .license-card h3{margin:0 0 6px;font-size:1.02rem}
+    .license-good{border-top:4px solid #2f7c57}
+    .license-care{border-top:4px solid #d99a26}
+    .license-stop{border-top:4px solid #a7432c}
+    .credit-example{
+      white-space:pre-wrap;
+      overflow-wrap:anywhere;
+      background:#071c28;
+      color:#fff7e4;
+      border-radius:12px;
+      padding:13px 14px;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+      font-size:.88rem;
+      line-height:1.5;
+      margin:10px 0;
+    }
+    .mini-checklist{margin:.45rem 0 0;padding-left:1.25rem}
+    .mini-checklist li{margin:.25rem 0}
+    @media(max-width:760px){
+      .license-grid{grid-template-columns:1fr}
+    }
+
+  
+    .audience-notice{
+      border:2px solid var(--orange);
+      background:linear-gradient(180deg,#fff8e9 0%,#fffdf7 100%);
+    }
+    .audience-notice h2{margin-bottom:10px}
+    .audience-notice p{margin:.45rem 0}
+
+  
+    .validation-summary{
+      display:none;
+      margin:0 0 14px;
+      padding:12px 14px;
+      border:2px solid #b33a24;
+      border-radius:12px;
+      background:#fff0ec;
+      color:#6d1f13;
+      font-weight:700;
+    }
+    .validation-summary.show{display:block}
+    .field-invalid{
+      border-color:#b33a24 !important;
+      box-shadow:0 0 0 3px rgba(179,58,36,.12) !important;
+    }
+
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">🎙 Onda Novoneyra · Bases + entrega · Samaín 2026</span>
+        <h1>Ecos do <span>Alén</span></h1>
+        <p class="subtitle">Historias de medo, memoria e tradición oral do Courel. Aquí atoparás as condicións de participación e o formulario de entrega. Aberto a toda a veciñanza, individualmente ou en grupo.</p>
+        <div class="hero-actions">
+          <div class="deadline">🍂 Data límite: 29 de outubro</div>
+          <div class="hero-links">
+            <a class="rights-jump" href="#musica-dereitos">🎵 Vas usar música? Consulta antes a guía de dereitos</a>
+            <a class="help-jump" href="#axuda">💡 Precisas axuda para editar ou enviar? Mira os titoriais</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="motto">Voces, memoria e territorio · do Courel ao mundo e do mundo ao Courel</div>
+  </header>
+  <main class="wrap">
+
+    <section class="card audience-notice" aria-labelledby="para-quen">
+      <h2 id="para-quen">👥 Para quen é este formulario?</h2>
+      <p><strong>Este formulario está destinado ás persoas participantes que non sexan alumnado do centro.</strong></p>
+      <p>O alumnado do centro debe entregar o seu podcast directamente <strong>copiándoo no ordenador da biblioteca</strong>, acompañado dun <strong>ficheiro de texto cos créditos do podcast</strong>: música, efectos ou outros materiais alleos empregados, coa súa autoría, procedencia e licenza ou autorización correspondente.</p>
+    </section>
+
+    <section class="card">
+      <h2>Antes de comezar</h2>
+      <p class="lead">O podcast debe recoller historias, crenzas, lendas ou relatos transmitidos tradicionalmente no Courel. Pode incluír entrevistas ou gravacións doutras persoas e completarse con presentacións, músicas, cabeceiras, reflexións ou outros recursos sonoros.</p>
+
+      <div class="rights-alert"><strong>🎵 Se vas engadir música, efectos ou outros materiais alleos, comproba primeiro que podes reutilizalos.</strong> Que unha canción estea en internet, YouTube, Spotify ou unha rede social non significa que se poida incorporar libremente a un podcast. Para facelo sinxelo, recomendamos priorizar <strong>dominio público/CC0 ou CC BY</strong>. Máis abaixo tes unha guía para buscar música, revisar a licenza e copiar correctamente os créditos no formulario. <a href="#musica-dereitos"><strong>Ir á guía de música e dereitos →</strong></a></div>
+
+      <p class="note"><strong>Quen participa?</strong> Chamamos <strong>persoas participantes no concurso</strong> a quen realiza o podcast: quen grava, entrevista, presenta, escribe, edita ou produce. As persoas que contan as historias poden ser outras ou poden coincidir coas participantes. Por exemplo, unha persoa adulta pode elaborar o seu propio podcast e contar ela mesma unha historia tradicional.</p>
+
+      <p class="note"><strong>Gravar e compartir con acordo.</strong> Antes de enviar o podcast, asegúrate de que todas as persoas que aparecen na gravación saben que o audio pode publicarse e están de acordo. Se participan persoas menores de idade, deberán contarse tamén coas autorizacións que correspondan.</p>
+
+      <p class="note"><strong>Identificar a quen conta as historias é opcional.</strong> Se esa persoa quere aparecer identificada na publicación, podes indicar o seu <strong>nome, alcume, localidade ou outra referencia acordada con ela</strong>. Se prefire non identificarse, pode participar igualmente e este campo pode quedar baleiro.</p>
+    </section>
+    <section class="card">
+      <form id="submissionForm" method="POST" novalidate action="PASTE_APPS_SCRIPT_WEB_APP_URL_HERE" accept-charset="UTF-8">
+        <input type="hidden" name="submitted_at" id="submitted_at"><input type="hidden" name="form_version" value="1.14">
+        <div class="honeypot" aria-hidden="true"><label>Deixa este campo baleiro <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <fieldset>
+          <legend>1 · O podcast</legend>
+          <div id="validationSummary" class="validation-summary" role="alert" aria-live="polite"></div>
+          <div class="grid">
+            <div class="full"><label class="required" for="titulo">Título do podcast</label><input id="titulo" name="titulo" type="text" required maxlength="160"></div>
+            <div><label class="required" for="modalidade">Modalidade de participación</label><select id="modalidade" name="modalidade" required><option value="">Escolle unha opción</option><option>Individual</option><option>En grupo</option></select></div>
+            <div><label for="localidade">Localidade de residencia das persoas participantes no concurso</label><input id="localidade" name="localidade" type="text" maxlength="240" placeholder="Se son varias e viven en lugares distintos, podes indicalo aquí."><p class="hint">Opcional.</p></div>
+            <div class="full"><label class="required" for="participantes">Nome e apelidos das persoas participantes no concurso</label><textarea id="participantes" name="participantes" required maxlength="1200" placeholder="Inclúe as persoas que gravan, entrevistan, presentan, editan ou producen o podcast. Se é un grupo, indica todas."></textarea><p class="hint">Non é necesario incluír aquí as persoas que só aparecen na gravación contando unha historia, salvo que tamén participen na realización do podcast.</p></div>
+            <div class="full"><label class="required" for="idades">Idade das persoas participantes no concurso</label><input id="idades" name="idades" type="text" required maxlength="400" placeholder="Ex.: Ana, 12 anos · Xosé, 42 anos"><p class="hint">Refírese ás persoas que realizan o podcast e empregarase para ter en conta a idade na valoración dos premios.</p></div>
+            <div class="full"><label for="persoas_maiores">Persoa ou persoas que contan as historias</label><input id="persoas_maiores" name="persoas_maiores" type="text" maxlength="700" placeholder="Opcional: nome, alcume, localidade ou outra referencia que a persoa queira facer pública."><p class="hint">Só se debe completar se a persoa que conta a historia está de acordo con aparecer identificada. Se non, déixao en branco.</p></div>
+            <div class="full"><label for="resumo">Cóntanos brevemente que historia ou historias recolle o podcast</label><textarea id="resumo" name="resumo" maxlength="2000"></textarea><p class="hint">Opcional.</p></div>
+            <div class="full"><label class="required" for="audio_url">Ligazón ao podcast</label><input id="audio_url" name="audio_url" type="url" required placeholder="https://…"><p class="hint">Pode ser unha ligazón de Drive, OneDrive, Dropbox ou outro servizo que permita acceder ao audio. Comproba que a ligazón funciona antes de enviar.</p></div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>2 · Persoa de contacto para o concurso e os premios</legend>
+          <div class="grid"><div><label class="required" for="contacto_nome">Nome e apelidos da persoa de contacto</label><input id="contacto_nome" name="contacto_nome" type="text" required maxlength="160"></div><div><label class="required" for="contacto_medio">Correo electrónico ou teléfono</label><input id="contacto_medio" name="contacto_medio" type="text" required maxlength="180" placeholder="Só precisamos un medio de contacto."></div></div>
+        </fieldset>
+        <fieldset>
+          <legend>3 · Música, efectos e outros materiais alleos</legend>
+
+          <p class="section-intro">
+            Se o podcast incorpora música, efectos, fragmentos de audio, textos ou outros materiais creados por outras persoas, indícaos aquí.
+            Se todo o material é propio, escolle “Non”.
+          </p>
+
+          <div class="choices" role="radiogroup" aria-label="Materiais alleos">
+            <label class="choice">
+              <input type="radio" name="materiais_terceiros" value="Non" required>
+              <span><strong>Non.</strong> Todo o material incorporado ao podcast é propio.</span>
+            </label>
+
+            <label class="choice">
+              <input type="radio" name="materiais_terceiros" value="Si" required>
+              <span><strong>Si.</strong> Empregamos música, efectos, fragmentos ou outros materiais doutras persoas.</span>
+            </label>
+          </div>
+
+          <div id="creditsWrap" class="conditional">
+            <label class="required" for="creditos">Créditos e permisos dos materiais alleos</label>
+            <textarea id="creditos" name="creditos" maxlength="4000"
+              placeholder="Indica cada material nunha liña. Ex.: Título — autor/a — fonte ou ligazón — licenza/autorización — condicións que deban respectarse."></textarea>
+            <p class="hint">
+              Inclúe, cando corresponda, a licenza exacta (por exemplo, CC BY 4.0), a ligazón á fonte, os créditos esixidos e calquera condición relevante.
+              Se tes unha autorización expresa para empregar un material con todos os dereitos reservados, indícao tamén aquí.
+            </p>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>4 · Declaracións obrigatorias</legend>
+          <p class="must">Para enviar o formulario é necesario marcar <strong>todas</strong> as declaracións deste apartado.</p>
+
+          <div id="groupDeclarationWrap" class="conditional">
+            <label class="choice">
+              <input id="declara_grupo" type="checkbox" name="declara_grupo" value="Si">
+              <span><strong>Se a participación é en grupo, declaro que todas as persoas integrantes coñecen e aceptan a participación neste concurso e as condicións recollidas neste formulario,</strong> e que conto coas autorizacións necesarias das súas persoas representantes legais cando corresponda. Actúo como persoa de contacto do grupo para os efectos desta participación e para as comunicacións relacionadas cos premios.</span>
+            </label>
+          </div>
+
+          <div class="choices">
+            <label class="choice">
+              <input type="checkbox" name="declara_dereitos" value="Si" required>
+              <span><strong>Declaro que dispoño dos dereitos ou autorizacións necesarios sobre o podcast e sobre todos os materiais incorporados nel.</strong>
+              Os contidos son propios, de dominio público ou se empregan conforme a unha licenza ou autorización válida. No caso dos materiais alleos indicados no apartado 3, comprobei e respecteime ás condicións aplicables e incluín os créditos cando corresponde.</span>
+            </label>
+
+            <label class="choice">
+              <input type="checkbox" name="declara_permisos_persoas" value="Si" required>
+              <span><strong>Declaro que as persoas que aparecen gravadas no podcast están informadas da finalidade do concurso e están de acordo coa gravación e coa posible difusión da súa voz e intervención.</strong>
+              Isto aplícase tanto ás persoas convidadas ou entrevistadas como ás propias persoas participantes no concurso. Se intervén algunha persoa menor de idade, comprométome a contar tamén coas autorizacións legalmente necesarias.</span>
+            </label>
+
+            <label class="choice">
+              <input type="checkbox" name="declara_adecuacion_menores" value="Si" required>
+              <span><strong>Se entre as persoas participantes no concurso ou entre as persoas que aparecen no podcast hai menores de idade, declaro que o contido e a linguaxe empregados son adecuados á súa idade</strong> e respectan a súa dignidade, intimidade e demais dereitos.</span>
+            </label>
+
+            <label class="choice">
+              <input type="checkbox" name="autoriza_publicacion_podcast" value="Si" required>
+              <span><strong>Autorizo a Onda Novoneyra e ao centro educativo a reproducir e comunicar publicamente o podcast, total ou parcialmente e sen finalidade comercial,</strong>
+              nos canais educativos, web, radio, redes sociais ou materiais de difusión relacionados co concurso e co proxecto Onda Novoneyra.</span>
+            </label>
+
+            <label class="choice">
+              <input type="checkbox" name="acepta_condicions" value="Si" required>
+              <span><strong>Declaro que lin e acepto as condicións de participación no concurso <em>Ecos do Alén</em> recollidas neste formulario.</strong></span>
+            </label>
+          </div>
+
+          <details>
+            <summary>Información sobre protección de datos e difusión</summary>
+            <div class="legal">
+              <p>Os datos deste formulario empregaranse para xestionar a participación en <em>Ecos do Alén</em>, contactar coa persoa indicada e, cando exista autorización, difundir os podcasts e os datos expresamente autorizados.</p>
+              <p>A publicación en redes sociais pode facer que os contidos autorizados sexan accesibles publicamente e queden sometidos tamén ás condicións da plataforma empregada. As autorizacións opcionais poderán retirarse para usos futuros, sen afectar ao realizado licitamente con anterioridade.</p>
+              <p><strong>Contacto do proxecto para consultas, rectificacións ou solicitudes relacionadas coa difusión:</strong> <span class="contact-chip">@ondanovoneyra</span> e <span class="contact-chip">@bibliocourel</span> en Instagram.</p>
+              <p><strong>Responsable formal do tratamento:</strong> [COMPLETAR COA DENOMINACIÓN OFICIAL DO CENTRO/ADMINISTRACIÓN]</p>
+              <p><strong>Delegado/a de protección de datos:</strong> [COMPLETAR CO DATO OFICIAL CORRESPONDENTE]</p>
+            </div>
+          </details>
+        </fieldset>
+
+        <fieldset>
+          <legend>5 · Identificación pública · opcional</legend>
+          <div class="optional-box">
+            <label class="choice">
+              <input id="autoriza_nome_localidade" type="checkbox" name="autoriza_nome_localidade" value="Si">
+              <span><strong>Autorizo a publicar o nome das persoas participantes no concurso e, se foi facilitada, a súa localidade de residencia</strong> cando se difunda o podcast.
+              Esta autorización é voluntaria e non afecta á participación nin á publicación do podcast. Non autoriza automaticamente a identificar as persoas que só aparecen contando historias; para iso deberá existir a súa propia autorización.</span>
+            </label>
+
+            <div id="groupPublicIdWrap" class="conditional">
+              <label class="choice">
+                <input id="declara_permiso_identificacion_grupo" type="checkbox" name="declara_permiso_identificacion_grupo" value="Si">
+                <span><strong>Se a participación é en grupo e se autoriza publicar nomes e/ou localidades, declaro que todas as persoas cuxos datos se publicarían prestaron expresamente a súa conformidade</strong> e, cando corresponda, que se conta coa autorización das súas persoas representantes legais.</span>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+<div class="actions">
+          <button type="submit">Enviar podcast</button>
+          <span class="status">Os campos marcados con * son obrigatorios.</span>
+        </div>
+      </form>
+    </section>
+  
+
+    <section class="card" id="musica-dereitos">
+      <h2>🎵 Guía rápida: música, efectos e dereitos de autor</h2>
+      <p class="lead">Podes facer un podcast estupendo sen música, pero se queres empregala é importante escoller material que realmente permita a súa reutilización e deixar ben anotados os créditos.</p>
+
+      <div class="rights-alert">
+        <strong>A opción máis fácil:</strong> usa música propia ou busca obras en <strong>dominio público/CC0</strong> ou con licenza <strong>CC BY</strong>. Así evitas a maior parte das condicións adicionais. Se a licenza é outra, le ben as condicións antes de incorporala.
+      </div>
+
+      <div class="help-grid">
+        <article class="help-card">
+          <h3>🔎 Onde buscar</h3>
+          <p><strong>Openverse</strong> permite buscar audio con licenzas abertas ou en dominio público. A propia plataforma recomenda comprobar sempre a licenza na páxina orixinal da obra antes de utilizala.</p>
+          <a class="help-link" href="https://openverse.org/" target="_blank" rel="noopener">Buscar audio en Openverse ↗</a>
+          <p style="margin-top:12px"><strong>Wikimedia Commons</strong> tamén ofrece ficheiros de audio reutilizables, pero cada ficheiro pode ter condicións de atribución distintas.</p>
+          <a class="help-link" href="https://commons.wikimedia.org/wiki/Special:MediaSearch?type=audio" target="_blank" rel="noopener">Buscar audio en Wikimedia Commons ↗</a>
+        </article>
+
+        <article class="help-card">
+          <h3>🧭 Que licenzas son máis sinxelas?</h3>
+          <div class="license-grid">
+            <div class="license-card license-good">
+              <h3>✓ CC0 / dominio público</h3>
+              <p>Son as opcións máis cómodas. A atribución non sempre é obrigatoria en CC0, pero recomendamos indicar igualmente a procedencia.</p>
+            </div>
+            <div class="license-card license-good">
+              <h3>✓ CC BY</h3>
+              <p>Pódese reutilizar e adaptar sempre que se dea crédito á persoa creadora e se indique a licenza.</p>
+            </div>
+            <div class="license-card license-care">
+              <h3>△ NC ou SA</h3>
+              <p><strong>NC</strong> limita o uso ao non comercial. <strong>SA</strong> pode obrigar a compartir adaptacións baixo a mesma licenza. Le as condicións antes de usar a obra.</p>
+            </div>
+            <div class="license-card license-stop">
+              <h3>! ND</h3>
+              <p>As licenzas con <strong>ND (Sen obras derivadas)</strong> non permiten compartir adaptacións. Para este concurso recomendamos non empregar música con ND.</p>
+            </div>
+          </div>
+          <a class="help-link" href="https://creativecommons.org/share-your-work/cclicenses/?lang=es" target="_blank" rel="noopener">Ver as licenzas Creative Commons ↗</a>
+        </article>
+      </div>
+
+      <h3 style="margin-top:24px">✍️ Que datos hai que copiar no formulario?</h3>
+      <p>Para cada música, efecto ou material alleo, intenta gardar estes datos. Creative Commons recomenda unha atribución baseada en <strong>TASL</strong>: título, autoría, fonte e licenza. Se fixeches cambios, indícao tamén.</p>
+      <ul class="mini-checklist">
+        <li><strong>Título</strong> da obra ou pista, se consta.</li>
+        <li><strong>Autor/a ou titular</strong> que debe recibir o crédito.</li>
+        <li><strong>Fonte</strong>: ligazón á páxina orixinal da obra.</li>
+        <li><strong>Licenza</strong>: nome e versión, por exemplo <em>CC BY 4.0</em>.</li>
+        <li><strong>Ligazón á licenza</strong>, cando exista.</li>
+        <li><strong>Cambios realizados</strong>: por exemplo, recorte, fundido, cambio de volume ou mestura con voz.</li>
+        <li>Se a páxina da obra indica unha <strong>forma concreta de atribución</strong>, consérvaa.</li>
+      </ul>
+
+      <p><strong>Exemplo listo para copiar no campo de créditos:</strong></p>
+      <div class="credit-example">«Título da pista» — Nome da persoa autora — https://ligazon-orixinal.example — CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/ — Modificacións: fragmento recortado, volume reducido e fundido de saída.</div>
+
+      <p><strong>Se tes autorización directa da persoa titular dos dereitos:</strong></p>
+      <div class="credit-example">«Título da pista» — Nome da persoa titular — autorización expresa para incorporar e difundir a obra neste podcast, recibida o [data] — Fonte/ligazón: [se existe] — Modificacións: [se as hai].</div>
+
+      <div class="privacy-tip">
+        <strong>Regra práctica:</strong> se non consegues saber claramente quen é a persoa autora, de onde procede a pista ou que licenza ten, escolle outra. Unha ligazón de descarga ou a simple frase “royalty free” non substitúen unha licenza clara.
+      </div>
+    </section>
+
+    <section class="card" id="axuda">
+      <h2>💡 Axuda para preparar e entregar o podcast</h2>
+      <p class="lead">Non fai falta ter experiencia editando audio. Con cortar o que sobra, ordenar os fragmentos, engadir unha presentación ou música se queres e exportar o resultado xa podes facer un bo podcast.</p>
+
+      <div class="help-grid">
+        <article class="help-card">
+          <h3>📱 No móbil ou tablet: Lexis Audio Editor</h3>
+          <p>É a opción máis sinxela para empezar: permite cortar, copiar, pegar, mesturar outro audio e exportar o resultado.</p>
+          <div class="video-wrap">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/x_tuw7Vz69Q"
+              title="Tutorial básico de Lexis Audio Editor"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+          <p class="hint">No vídeo, a edición básica comeza arredor do minuto 2:51 e a exportación no 4:15.</p>
+          <a class="help-link" href="https://www.lexisaudioeditor.com/tutorial-overview-android/" target="_blank" rel="noopener">Guía oficial de Lexis para Android ↗</a>
+        </article>
+
+        <article class="help-card">
+          <h3>💻 No ordenador: Audacity</h3>
+          <p>Audacity é software libre e gratuíto. Serve especialmente ben se queres traballar con varias pistas: voz, música, presentacións ou efectos.</p>
+          <div class="video-wrap">
+            <iframe
+              src="https://mediateca.educa.madrid.org/video/t8egja3kczh3b1ms/fs"
+              title="Primeiros pasos con Audacity para realizar podcast"
+              loading="lazy"
+              allowfullscreen></iframe>
+          </div>
+          <a class="help-link" href="https://uveg.atlassian.net/wiki/spaces/STU/pages/2728396965" target="_blank" rel="noopener">Máis recursos actuais de Audacity ↗</a>
+        </article>
+      </div>
+
+      <h3 style="margin-top:24px">📤 Como compartir o arquivo para pegalo no formulario</h3>
+      <p>Non tes que facer público o audio nunha rede social. Abonda con subir o ficheiro a un servizo que che dea unha ligazón de descarga e pegar esa ligazón no campo correspondente.</p>
+
+      <div class="help-grid">
+        <article class="help-card">
+          <h3>SwissTransfer · sen crear conta</h3>
+          <p>É unha opción práctica para unha entrega puntual: permite enviar ficheiros mediante unha ligazón temporal e configurar a súa duración.</p>
+          <ol class="steps">
+            <li>Entra en SwissTransfer e selecciona o ficheiro do podcast.</li>
+            <li>Escolle <strong>Compartir mediante ligazón</strong>.</li>
+            <li>Para este concurso, escolle unha duración suficientemente longa; recomendamos <strong>30 días</strong>.</li>
+            <li>Copia a ligazón e pégaa no formulario.</li>
+          </ol>
+          <a class="help-link" href="https://www.swisstransfer.com/es" target="_blank" rel="noopener">Abrir SwissTransfer ↗</a>
+        </article>
+
+        <article class="help-card">
+          <h3>Proton Drive · ligazón controlable</h3>
+          <p>Se xa tes ou queres crear unha conta, permite compartir o audio mediante unha ligazón e retirar posteriormente o acceso; tamén admite contrasinal e caducidade.</p>
+          <ol class="steps">
+            <li>Sube o podcast a Proton Drive.</li>
+            <li>Selecciona <strong>Compartir</strong> e crea unha ligazón pública con permiso de lectura.</li>
+            <li>Se lle pos contrasinal, escríbeo tamén no campo opcional deste formulario.</li>
+            <li>Copia e pega a ligazón.</li>
+          </ol>
+          <a class="help-link" href="https://proton.me/support/drive-shareable-link" target="_blank" rel="noopener">Guía oficial de Proton Drive ↗</a>
+        </article>
+      </div>
+
+      <div class="privacy-tip">
+        <strong>Un pequeno consello de privacidade:</strong> non é necesario poñer nomes ou outros datos persoais no nome do ficheiro. Un nome como <code>ecos-do-alen-podcast.mp3</code> chega perfectamente. Comparte a ligazón só co nivel de acceso necesario e comproba nunha xanela privada que se pode abrir antes de enviar.
+      </div>
+
+      <details>
+        <summary>Xa uso outro servizo para compartir ficheiros. Vale?</summary>
+        <p>Si. Podes empregar outro servizo se che permite xerar unha ligazón desde a que Onda Novoneyra poida escoitar ou descargar o audio. Evita dar permisos de edición cando non sexan necesarios e procura que a ligazón siga activa durante o período de valoración do concurso.</p>
+      </details>
+    </section>
+
+  </main>
+  <footer class="wrap">Onda Novoneyra · A radio escolar do Courel · <a href="https://www.instagram.com/ondanovoneyra/" target="_blank" rel="noopener">@ondanovoneyra</a> · <a href="https://www.instagram.com/bibliocourel/" target="_blank" rel="noopener">@bibliocourel</a></footer>
+  <script>
+    const form = document.getElementById('submissionForm');
+    const endpointPlaceholder = 'PASTE_APPS_SCRIPT_WEB_APP_URL_HERE';
+    const modalidade = document.getElementById('modalidade');
+    const groupDeclarationWrap = document.getElementById('groupDeclarationWrap');
+    const groupDeclaration = document.getElementById('declara_grupo');
+    const publicId = document.getElementById('autoriza_nome_localidade');
+    const groupPublicIdWrap = document.getElementById('groupPublicIdWrap');
+    const groupPublicId = document.getElementById('declara_permiso_identificacion_grupo');
+
+    const creditsWrap = document.getElementById('creditsWrap');
+    const credits = document.getElementById('creditos');
+function updateThirdParty(){
+      const selected = document.querySelector('input[name="materiais_terceiros"]:checked');
+      const needsCredits = selected && selected.value === 'Si';
+
+      creditsWrap.classList.toggle('show', !!needsCredits);
+      credits.required = !!needsCredits;
+
+      if(!needsCredits){
+        credits.value = '';
+      }
+    }
+
+
+    document.querySelectorAll('input[name="materiais_terceiros"]').forEach(
+      el => el.addEventListener('change', updateThirdParty)
+    );
+function updateGroupRules(){
+      const isGroup = modalidade && modalidade.value === 'En grupo';
+
+      if(groupDeclarationWrap && groupDeclaration){
+        groupDeclarationWrap.classList.toggle('show', isGroup);
+        groupDeclaration.required = isGroup;
+        if(!isGroup) groupDeclaration.checked = false;
+      }
+
+      updateGroupPublicId();
+    }
+
+    function updateGroupPublicId(){
+      const isGroup = modalidade && modalidade.value === 'En grupo';
+      const wantsPublicId = publicId && publicId.checked;
+      const needsGroupConfirmation = isGroup && wantsPublicId;
+
+      if(groupPublicIdWrap && groupPublicId){
+        groupPublicIdWrap.classList.toggle('show', needsGroupConfirmation);
+        groupPublicId.required = needsGroupConfirmation;
+        if(!needsGroupConfirmation) groupPublicId.checked = false;
+      }
+    }
+
+    if(modalidade) modalidade.addEventListener('change', updateGroupRules);
+    if(publicId) publicId.addEventListener('change', updateGroupPublicId);
+    updateGroupRules();
+
+form.addEventListener('submit', (ev) => {
+      document.getElementById('submitted_at').value = new Date().toISOString();
+
+      const summary = document.getElementById('validationSummary');
+      const fields = Array.from(form.querySelectorAll('input, select, textarea'))
+        .filter(el => el.willValidate && !el.checkValidity());
+
+      form.querySelectorAll('.field-invalid').forEach(el => {
+        el.classList.remove('field-invalid');
+        el.removeAttribute('aria-invalid');
+      });
+
+      if(fields.length){
+        ev.preventDefault();
+
+        fields.forEach(el => {
+          el.classList.add('field-invalid');
+          el.setAttribute('aria-invalid', 'true');
+        });
+
+        summary.textContent = fields.length === 1
+          ? 'Falta completar 1 campo obrigatorio antes de enviar o podcast.'
+          : `Faltan completar ${fields.length} campos obrigatorios antes de enviar o podcast. Revísalos e volve premer “Enviar podcast”.`;
+
+        summary.classList.add('show');
+
+        const first = fields[0];
+        first.scrollIntoView({behavior:'smooth', block:'center'});
+        setTimeout(() => first.focus({preventScroll:true}), 350);
+        return;
+      }
+
+      summary.classList.remove('show');
+
+      if(form.action.includes(endpointPlaceholder)){
+        ev.preventDefault();
+        summary.textContent = 'O formulario está completo, pero aínda non está conectado ao sistema de recepción. Falta configurar a ligazón de Google Apps Script antes de publicalo.';
+        summary.classList.add('show');
+        summary.scrollIntoView({behavior:'smooth', block:'center'});
+        return;
+      }
+    });
+
+    form.addEventListener('input', (ev) => {
+      const el = ev.target;
+      if(el && el.willValidate && el.checkValidity()){
+        el.classList.remove('field-invalid');
+        el.removeAttribute('aria-invalid');
+      }
+    });
+
+    form.addEventListener('change', (ev) => {
+      const el = ev.target;
+      if(el && el.willValidate && el.checkValidity()){
+        el.classList.remove('field-invalid');
+        el.removeAttribute('aria-invalid');
+      }
+    });
+  </script>
+</body>
+</html>
