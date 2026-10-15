@@ -92,20 +92,25 @@
       pointer-events:none;
     }
     .hero-copy{position:relative;z-index:2;max-width:760px}
-.school-logo{
-  position:absolute;
-  top:300px;
-  right:70px;
-  width:240px;
-  height:auto;
-  max-height:none;
-  object-fit:contain;
-  z-index:4;
-  padding:0;
-  border-radius:0;
-  background:transparent;
-  box-shadow:none;
-}
+    .school-logo-wrap{
+      position:absolute;
+      top:280px;
+      right:110px;
+      width:320px;
+      z-index:4;
+    }
+    .school-logo-wrap a{display:block}
+    .school-logo-wrap img{
+      display:block;
+      width:100%;
+      height:auto;
+      margin:0;
+      padding:0;
+      border:0;
+      background:transparent;
+      box-shadow:none;
+      object-fit:contain;
+    }
     .eyebrow{
       display:inline-block;
       padding:7px 11px;
@@ -288,20 +293,6 @@
       font-weight:950;
       cursor:pointer;
       box-shadow:0 7px 16px rgba(255,134,22,.25);
-.school-logo{
-  position:absolute;
-  top:305px;
-  right:85px;
-  width:230px;
-  height:auto;
-  max-height:none;
-  object-fit:contain;
-  z-index:4;
-  padding:0;
-  border-radius:0;
-  background:transparent;
-  box-shadow:none;
-}
     }
     .status{font-size:.92rem;color:var(--muted)}
     footer{padding:0 0 42px;color:#40534f;font-size:.9rem;text-align:center}
@@ -313,6 +304,13 @@
       .hero{padding:24px 20px 105px;min-height:300px}
       .hero h1{font-size:3.6rem}
       .card{padding:18px}
+      .school-logo-wrap{
+        position:relative;
+        top:auto;
+        right:auto;
+        width:min(320px,86%);
+        margin:24px auto 0;
+      }
     }
   
     .help-jump{
@@ -470,15 +468,6 @@
   <header class="wrap">
 <section class="hero">
 
-<div class="school-logo-wrap">
-  <a href="https://www.edu.xunta.gal/centros/cpipoetauxionovoneyra/"
-     target="_blank"
-     rel="noopener">
-    <img src="logo_cpi.png"
-         alt="CPI Poeta Uxío Novoneyra">
-  </a>
-</div>
-
   <div class="hero-copy">
         <span class="eyebrow">🎙 Onda Novoneyra · Bases + entrega · Samaín 2026</span>
         <h1>Ecos do <span>Alén</span></h1>
@@ -490,6 +479,11 @@
             <a class="help-jump" href="#axuda">💡 Precisas axuda para editar ou enviar? Mira os titoriais</a>
           </div>
         </div>
+      </div>
+      <div class="school-logo-wrap">
+        <a href="https://www.edu.xunta.gal/centros/cpipoetauxionovoneyra/" target="_blank" rel="noopener">
+          <img src="logo_cpi.png" alt="CPI Poeta Uxío Novoneyra">
+        </a>
       </div>
     </section>
     <div class="motto">Voces, memoria e territorio · do Courel ao mundo e do mundo ao Courel</div>
@@ -505,6 +499,8 @@
     <section class="card">
       <h2>Antes de comezar</h2>
       <p class="lead">O podcast debe recoller historias, crenzas, lendas ou relatos transmitidos tradicionalmente no Courel. Pode incluír entrevistas ou gravacións doutras persoas e completarse con presentacións, músicas, cabeceiras, reflexións ou outros recursos sonoros.</p>
+
+      <p class="note"><strong>Referencia a Onda Novoneyra.</strong> Agradecemos que cada podcast inclúa, na súa presentación, cabeceira ou peche, unha referencia a <strong>Onda Novoneyra</strong> como emisora do programa.</p>
 
       <div class="rights-alert"><strong>🎵 Se vas engadir música, efectos ou outros materiais alleos, comproba primeiro que podes reutilizalos.</strong> Que unha canción estea en internet, YouTube, Spotify ou unha rede social non significa que se poida incorporar libremente a un podcast. Para facelo sinxelo, recomendamos priorizar <strong>dominio público/CC0 ou CC BY</strong>. Máis abaixo tes unha guía para buscar música, revisar a licenza e copiar correctamente os créditos no formulario. <a href="#musica-dereitos"><strong>Ir á guía de música e dereitos →</strong></a></div>
 
@@ -612,7 +608,7 @@
             <div class="legal">
               <p>Os datos deste formulario empregaranse para xestionar a participación en <em>Ecos do Alén</em>, contactar coa persoa indicada e, cando exista autorización, difundir os podcasts e os datos expresamente autorizados.</p>
               <p>A publicación en redes sociais pode facer que os contidos autorizados sexan accesibles publicamente e queden sometidos tamén ás condicións da plataforma empregada. As autorizacións opcionais poderán retirarse para usos futuros, sen afectar ao realizado licitamente con anterioridade.</p>
-              <p><strong>Contacto do proxecto para consultas, rectificacións ou solicitudes relacionadas coa difusión:</strong> <span class="contact-chip">@ondanovoneyra</span> e <span class="contact-chip">@bibliocourel</span> en Instagram.</p>
+              <p><strong>Contacto do proxecto para consultas, rectificacións ou solicitudes relacionadas coa difusión:</strong> <span class="contact-chip">@ondanovoneyra</span>, <span class="contact-chip">@bibliocourel</span> e <span class="contact-chip">@courelcole</span> en Instagram.</p>
               <p><strong>Responsable formal do tratamento:</strong> @bibliocourel</p>
             </div>
           </details>
