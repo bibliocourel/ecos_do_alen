@@ -92,18 +92,19 @@
       pointer-events:none;
     }
     .hero-copy{position:relative;z-index:2;max-width:760px}
-    .school-logo{
+.school-logo{
   position:absolute;
-  top:28px;
-  right:30px;
-  width:105px;
-  max-height:75px;
+  top:300px;
+  right:70px;
+  width:240px;
+  height:auto;
+  max-height:none;
   object-fit:contain;
   z-index:4;
-  padding:7px;
-  border-radius:12px;
-  background:rgba(255,246,223,.92);
-  box-shadow:0 5px 14px rgba(0,0,0,.16);
+  padding:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
 }
     .eyebrow{
       display:inline-block;
@@ -469,13 +470,14 @@
   <header class="wrap">
 <section class="hero">
 
+<div class="school-logo-wrap">
   <a href="https://www.edu.xunta.gal/centros/cpipoetauxionovoneyra/"
      target="_blank"
      rel="noopener">
-    <img class="school-logo"
-         src="logo_cpi.png"
+    <img src="logo_cpi.png"
          alt="CPI Poeta Uxío Novoneyra">
   </a>
+</div>
 
   <div class="hero-copy">
         <span class="eyebrow">🎙 Onda Novoneyra · Bases + entrega · Samaín 2026</span>
