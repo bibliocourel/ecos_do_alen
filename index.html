@@ -441,8 +441,11 @@
     .audience-notice{
       border:2px solid var(--orange);
       background:linear-gradient(180deg,#fff8e9 0%,#fffdf7 100%);
+      border-radius:14px;
+      padding:16px 18px;
+      margin:0 0 22px;
     }
-    .audience-notice h2{margin-bottom:10px}
+    .audience-notice h2{margin:0 0 10px}
     .audience-notice p{margin:.45rem 0}
 
   
@@ -490,17 +493,11 @@
   </header>
   <main class="wrap">
 
-    <section class="card audience-notice" aria-labelledby="para-quen">
-      <h2 id="para-quen">👥 Para quen é este formulario?</h2>
-      <p><strong>Este formulario está destinado ás persoas participantes que non sexan alumnado do centro.</strong></p>
-      <p>O alumnado do centro debe entregar o seu podcast directamente <strong>copiándoo no ordenador da biblioteca</strong>, acompañado dun <strong>ficheiro de texto cos créditos do podcast</strong>: música, efectos ou outros materiais alleos empregados, coa súa autoría, procedencia e licenza ou autorización correspondente.</p>
-    </section>
-
     <section class="card">
       <h2>Antes de comezar</h2>
       <p class="lead">O podcast debe recoller historias, crenzas, lendas ou relatos transmitidos tradicionalmente no Courel. Pode incluír entrevistas ou gravacións doutras persoas e completarse con presentacións, músicas, cabeceiras, reflexións ou outros recursos sonoros.</p>
 
-      <p class="note"><strong>Referencia a Onda Novoneyra.</strong> Agradecemos que cada podcast inclúa, na súa presentación, cabeceira ou peche, unha ou varias referencias a <strong>Onda Novoneyra</strong> como emisora do programa.</p>
+      <p class="note"><strong>Referencia a Onda Novoneyra.</strong> Agradecemos que cada podcast inclúa, na súa presentación, cabeceira ou peche, unha referencia a <strong>Onda Novoneyra</strong> como emisora do programa.</p>
 
       <div class="rights-alert"><strong>🎵 Se vas engadir música, efectos ou outros materiais alleos, comproba primeiro que podes reutilizalos.</strong> Que unha canción estea en internet, YouTube, Spotify ou unha rede social non significa que se poida incorporar libremente a un podcast. Para facelo sinxelo, recomendamos priorizar <strong>dominio público/CC0 ou CC BY</strong>. Máis abaixo tes unha guía para buscar música, revisar a licenza e copiar correctamente os créditos no formulario. <a href="#musica-dereitos"><strong>Ir á guía de música e dereitos →</strong></a></div>
 
@@ -511,6 +508,12 @@
       <p class="note"><strong>Identificar a quen conta as historias é opcional.</strong> Se esa persoa quere aparecer identificada na publicación, podes indicar o seu <strong>nome, alcume, localidade ou outra referencia acordada con ela</strong>. Se prefire non identificarse, pode participar igualmente e este campo pode quedar baleiro.</p>
     </section>
     <section class="card">
+      <div class="audience-notice" aria-labelledby="para-quen">
+        <h2 id="para-quen">👥 Para quen é este formulario?</h2>
+        <p><strong>Este formulario está destinado ás persoas participantes que non sexan alumnado do centro.</strong></p>
+        <p>O alumnado do centro debe entregar o seu podcast directamente <strong>copiándoo no ordenador da biblioteca</strong>, acompañado dun <strong>ficheiro de texto cos créditos do podcast</strong>: música, efectos ou outros materiais alleos empregados, coa súa autoría, procedencia e licenza ou autorización correspondente.</p>
+      </div>
+
       <form id="submissionForm" method="POST" novalidate action="https://script.google.com/macros/s/AKfycbw92bXTOTxCNvIlL7K_PfmVkIlbFiyU4QX5VNyVUWqBogrUQs_45BaEfDsQh0ENSyqxzg/exec" accept-charset="UTF-8">
         <input type="hidden" name="submitted_at" id="submitted_at"><input type="hidden" name="form_version" value="1.14">
         <div class="honeypot" aria-hidden="true"><label>Deixa este campo baleiro <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
