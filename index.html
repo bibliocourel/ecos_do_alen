@@ -92,6 +92,19 @@
       pointer-events:none;
     }
     .hero-copy{position:relative;z-index:2;max-width:760px}
+    .school-logo{
+  position:absolute;
+  top:28px;
+  right:30px;
+  width:105px;
+  max-height:75px;
+  object-fit:contain;
+  z-index:4;
+  padding:7px;
+  border-radius:12px;
+  background:rgba(255,246,223,.92);
+  box-shadow:0 5px 14px rgba(0,0,0,.16);
+}
     .eyebrow{
       display:inline-block;
       padding:7px 11px;
@@ -274,6 +287,13 @@
       font-weight:950;
       cursor:pointer;
       box-shadow:0 7px 16px rgba(255,134,22,.25);
+      .school-logo{
+  width:78px;
+  max-height:58px;
+  top:18px;
+  right:18px;
+  padding:5px;
+}
     }
     .status{font-size:.92rem;color:var(--muted)}
     footer{padding:0 0 42px;color:#40534f;font-size:.9rem;text-align:center}
@@ -440,8 +460,17 @@
 </head>
 <body>
   <header class="wrap">
-    <section class="hero">
-      <div class="hero-copy">
+<section class="hero">
+
+  <a href="https://www.edu.xunta.gal/centros/cpipoetauxionovoneyra/"
+     target="_blank"
+     rel="noopener">
+    <img class="school-logo"
+         src="AQUI_VAI_A_LIGAZON_DIRECTA_AO_LOGO"
+         alt="CPI Poeta Uxío Novoneyra">
+  </a>
+
+  <div class="hero-copy">
         <span class="eyebrow">🎙 Onda Novoneyra · Bases + entrega · Samaín 2026</span>
         <h1>Ecos do <span>Alén</span></h1>
         <p class="subtitle">Historias de medo, memoria e tradición oral do Courel. Aquí atoparás as condicións de participación e o formulario de entrega. Aberto a toda a veciñanza, individualmente ou en grupo.</p>
