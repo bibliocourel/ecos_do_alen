@@ -416,6 +416,22 @@
       padding:14px;
     }
     .license-card h3{margin:0 0 6px;font-size:1.02rem}
+    .source-featured{
+      border:2px solid #2f7c57;
+      background:linear-gradient(180deg,#f1faf5 0%,#ffffff 100%);
+      border-radius:16px;
+      padding:18px;
+      margin:14px 0;
+    }
+    .source-featured h3{margin:0 0 8px;font-size:1.18rem}
+    .search-terms{
+      margin-top:12px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:#f4f0e5;
+      color:#43514d;
+      font-size:.93rem;
+    }
     .license-good{border-top:4px solid #2f7c57}
     .license-care{border-top:4px solid #d99a26}
     .license-stop{border-top:4px solid #a7432c}
@@ -499,7 +515,7 @@
 
       <p class="note"><strong>Referencia a Onda Novoneyra.</strong> Agradecemos que cada podcast inclúa, na súa presentación, cabeceira ou peche, unha referencia a <strong>Onda Novoneyra</strong> como emisora do programa.</p>
 
-      <div class="rights-alert"><strong>🎵 Se vas engadir música, efectos ou outros materiais alleos, comproba primeiro que podes reutilizalos.</strong> Que unha canción estea en internet, YouTube, Spotify ou unha rede social non significa que se poida incorporar libremente a un podcast. Para facelo sinxelo, recomendamos priorizar <strong>dominio público/CC0 ou CC BY</strong>. Máis abaixo tes unha guía para buscar música, revisar a licenza e copiar correctamente os créditos no formulario. <a href="#musica-dereitos"><strong>Ir á guía de música e dereitos →</strong></a></div>
+      <div class="rights-alert"><strong>🎵 Engadir música ou efectos pode ser moi sinxelo.</strong> A opción máis sinxela que recomendamos é <strong>Pixabay</strong>: ten música e efectos gratuítos, pode usarse en castelán e a súa licenza permite incorporalos a podcasts como parte dunha obra máis ampla. Se prefires outras fontes, tamén podes facelo, pero deberás revisar e indicar correctamente a licenza e os créditos. <a href="#musica-dereitos"><strong>Ir á guía de música e dereitos →</strong></a></div>
 
       <p class="note"><strong>Quen participa?</strong> Chamamos <strong>persoas participantes no concurso</strong> a quen realiza o podcast: quen grava, entrevista, presenta, escribe, edita ou produce. As persoas que contan as historias poden ser outras ou poden coincidir coas participantes. Por exemplo, unha persoa adulta pode elaborar o seu propio podcast e contar ela mesma unha historia tradicional.</p>
 
@@ -515,7 +531,7 @@
       </div>
 
       <form id="submissionForm" method="POST" novalidate action="https://script.google.com/macros/s/AKfycbw92bXTOTxCNvIlL7K_PfmVkIlbFiyU4QX5VNyVUWqBogrUQs_45BaEfDsQh0ENSyqxzg/exec" accept-charset="UTF-8">
-        <input type="hidden" name="submitted_at" id="submitted_at"><input type="hidden" name="form_version" value="1.14">
+        <input type="hidden" name="submitted_at" id="submitted_at"><input type="hidden" name="form_version" value="1.16">
         <div class="honeypot" aria-hidden="true"><label>Deixa este campo baleiro <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <fieldset>
           <legend>1 · O podcast</legend>
@@ -539,29 +555,27 @@
           <legend>3 · Música, efectos e outros materiais alleos</legend>
 
           <p class="section-intro">
-            Se o podcast incorpora música, efectos, fragmentos de audio, textos ou outros materiais creados por outras persoas, indícaos aquí.
-            Se todo o material é propio, escolle “Non”.
+            Este apartado é moi sinxelo. Se o podcast <strong>non leva música</strong>, ou se a música e os efectos son <strong>de produción propia</strong> ou proceden <strong>exclusivamente de Pixabay</strong>, escolle a primeira opción. Se tamén empregas materiais doutras fontes, escolle a segunda e indica os seus créditos.
           </p>
 
           <div class="choices" role="radiogroup" aria-label="Materiais alleos">
             <label class="choice">
               <input type="radio" name="materiais_terceiros" value="Non" required>
-              <span><strong>Non.</strong> Todo o material incorporado ao podcast é propio.</span>
+              <span><strong>Todo listo.</strong> O podcast non leva música, ou a música e os efectos son de produción propia ou proceden exclusivamente de Pixabay.</span>
             </label>
 
             <label class="choice">
               <input type="radio" name="materiais_terceiros" value="Si" required>
-              <span><strong>Si.</strong> Empregamos música, efectos, fragmentos ou outros materiais doutras persoas.</span>
+              <span><strong>Usamos tamén outros materiais.</strong> Empregamos música, efectos, fragmentos, textos ou outros recursos procedentes doutras fontes e imos indicar os seus créditos.</span>
             </label>
           </div>
 
           <div id="creditsWrap" class="conditional">
             <label class="required" for="creditos">Créditos e permisos dos materiais alleos</label>
             <textarea id="creditos" name="creditos" maxlength="4000"
-              placeholder="Indica cada material nunha liña. Ex.: Título — autor/a — fonte ou ligazón — licenza/autorización — condicións que deban respectarse."></textarea>
+              placeholder="Indica cada material nunha liña. Ex.: Título — autor/a — fonte ou ligazón — licenza ou autorización."></textarea>
             <p class="hint">
-              Inclúe, cando corresponda, a licenza exacta (por exemplo, CC BY 4.0), a ligazón á fonte, os créditos esixidos e calquera condición relevante.
-              Se tes unha autorización expresa para empregar un material con todos os dereitos reservados, indícao tamén aquí.
+              Indica a licenza cando exista (por exemplo, CC BY 4.0), a ligazón á fonte e os créditos correspondentes. Se contas cunha autorización expresa, podes indicala aquí.
             </p>
           </div>
         </fieldset>
@@ -643,66 +657,87 @@
   
 
     <section class="card" id="musica-dereitos">
-      <h2>🎵 Guía rápida: música, efectos e dereitos de autor</h2>
-      <p class="lead">Podes facer un podcast estupendo sen música, pero se queres empregala é importante escoller material que realmente permita a súa reutilización e deixar ben anotados os créditos.</p>
+      <h2>🎵 Guía fácil: música, efectos e dereitos de autor</h2>
+      <p class="lead">Non tes que usar música para facer un bo podcast. Pero, se queres engadila, hai formas moi sinxelas de facelo ben. A opción que recomendamos para empezar é <strong>Pixabay</strong>.</p>
 
-      <div class="rights-alert">
-        <strong>A opción máis fácil:</strong> usa música propia ou busca obras en <strong>dominio público/CC0</strong> ou con licenza <strong>CC BY</strong>. Así evitas a maior parte das condicións adicionais. Se a licenza é outra, le ben as condicións antes de incorporala.
+      <div class="source-featured">
+        <h3>⭐ O máis fácil: Pixabay Music</h3>
+        <p><strong>Pixabay Music</strong> está dispoñible en castelán e permite buscar música por <strong>xénero, estado de ánimo, movemento, duración e tema</strong>. Podes escribir tamén o título ou palabras relacionadas co que buscas.</p>
+        <p>A música de Pixabay pode incorporarse como fondo, cabeceira ou peche dun podcast baixo a <strong>Pixabay Content License</strong>. A licenza permite usar e adaptar o contido gratuitamente como parte dunha obra máis ampla, e non obriga a atribuír á persoa autora, aínda que Pixabay agradece o crédito.</p>
+        <p><strong>Para este proxecto recomendamos igualmente deixar constancia da procedencia</strong>. Garda o título da pista, o nome da persoa creadora, a ligazón á pista e indica <strong>“Pixabay Content License”</strong>.</p>
+        <div class="credit-example">«Título da pista» — Nome da persoa creadora — Pixabay — https://ligazon-da-pista — Pixabay Content License.</div>
+        <p class="hint">Usa a pista integrada no teu podcast e conserva a ligazón e os datos da descarga. Así terás sempre a procedencia ben gardada.</p>
+        <a class="help-link" href="https://pixabay.com/es/music/search/" target="_blank" rel="noopener">Buscar música en Pixabay ↗</a>
+        <a class="help-link" href="https://pixabay.com/service/license-summary/" target="_blank" rel="noopener">Consultar a Pixabay Content License ↗</a>
       </div>
 
+      <div class="source-featured">
+        <h3>🔊 Para efectos e ambientes: Pixabay Sound Effects</h3>
+        <p>Na mesma web podes buscar <strong>efectos de son e ambientes</strong>: vento, bosque, pasos, portas, campás, choiva, animais, sons nocturnos, suspense... A interface tamén pode usarse en castelán e aplícase a mesma <strong>Pixabay Content License</strong>.</p>
+        <a class="help-link" href="https://pixabay.com/es/sound-effects/" target="_blank" rel="noopener">Buscar efectos en Pixabay ↗</a>
+      </div>
+
+      <div class="search-terms">
+        <strong>Consello para atopar máis resultados:</strong> podes buscar en castelán, pero moitos arquivos están etiquetados en inglés. Se atopas pouco, proba tamén palabras como <em>dark</em>, <em>mysterious</em>, <em>suspense</em>, <em>eerie</em>, <em>forest</em>, <em>wind</em>, <em>footsteps</em>, <em>bells</em>, <em>ambient</em>, <em>folk</em> ou <em>cinematic</em>.
+      </div>
+
+      <h3 style="margin-top:26px">Outras opcións se queres buscar máis</h3>
       <div class="help-grid">
         <article class="help-card">
-          <h3>🔎 Onde buscar</h3>
-          <p><strong>Openverse</strong> permite buscar audio con licenzas abertas ou en dominio público. A propia plataforma recomenda comprobar sempre a licenza na páxina orixinal da obra antes de utilizala.</p>
-          <a class="help-link" href="https://openverse.org/" target="_blank" rel="noopener">Buscar audio en Openverse ↗</a>
-          <p style="margin-top:12px"><strong>Wikimedia Commons</strong> tamén ofrece ficheiros de audio reutilizables, pero cada ficheiro pode ter condicións de atribución distintas.</p>
-          <a class="help-link" href="https://commons.wikimedia.org/wiki/Special:MediaSearch?type=audio" target="_blank" rel="noopener">Buscar audio en Wikimedia Commons ↗</a>
+          <h3>Openverse · Creative Commons e dominio público</h3>
+          <p>Pode usarse en castelán e permite localizar audio con licenzas abertas ou en dominio público. <strong>Comproba sempre a licenza na páxina orixinal do ficheiro</strong>, porque cada resultado pode ter condicións distintas.</p>
+          <a class="help-link" href="https://openverse.org/es" target="_blank" rel="noopener">Buscar audio en Openverse ↗</a>
         </article>
 
         <article class="help-card">
-          <h3>🧭 Que licenzas son máis sinxelas?</h3>
-          <div class="license-grid">
-            <div class="license-card license-good">
-              <h3>✓ CC0 / dominio público</h3>
-              <p>Son as opcións máis cómodas. A atribución non sempre é obrigatoria en CC0, pero recomendamos indicar igualmente a procedencia.</p>
-            </div>
-            <div class="license-card license-good">
-              <h3>✓ CC BY</h3>
-              <p>Pódese reutilizar e adaptar sempre que se dea crédito á persoa creadora e se indique a licenza.</p>
-            </div>
-            <div class="license-card license-care">
-              <h3>△ NC ou SA</h3>
-              <p><strong>NC</strong> limita o uso ao non comercial. <strong>SA</strong> pode obrigar a compartir adaptacións baixo a mesma licenza. Le as condicións antes de usar a obra.</p>
-            </div>
-            <div class="license-card license-stop">
-              <h3>! ND</h3>
-              <p>As licenzas con <strong>ND (Sen obras derivadas)</strong> non permiten compartir adaptacións. Para este concurso recomendamos non empregar música con ND.</p>
-            </div>
-          </div>
-          <a class="help-link" href="https://creativecommons.org/share-your-work/cclicenses/?lang=es" target="_blank" rel="noopener">Ver as licenzas Creative Commons ↗</a>
+          <h3>Musopen · especialmente útil para música clásica</h3>
+          <p>Ten versión en castelán e permite explorar música por compositor, instrumento, período, forma e etiquetas como <em>dramatic</em>, <em>sad</em>, <em>relaxing</em> ou <em>energetic</em>. Revisa sempre a licenza concreta da gravación antes de empregala.</p>
+          <a class="help-link" href="https://musopen.org/es/music/" target="_blank" rel="noopener">Buscar música en Musopen ↗</a>
         </article>
       </div>
 
-      <h3 style="margin-top:24px">✍️ Que datos hai que copiar no formulario?</h3>
-      <p>Para cada música, efecto ou material alleo, intenta gardar estes datos. Creative Commons recomenda unha atribución baseada en <strong>TASL</strong>: título, autoría, fonte e licenza. Se fixeches cambios, indícao tamén.</p>
+      <details style="margin-top:18px">
+        <summary>Se usas Creative Commons, que licenzas son máis sinxelas?</summary>
+        <div class="license-grid">
+          <div class="license-card license-good">
+            <h3>✓ CC0 / dominio público</h3>
+            <p>Son as opcións máis cómodas. A atribución pode non ser obrigatoria, pero recomendamos indicar igualmente título, autoría e fonte cando consten.</p>
+          </div>
+          <div class="license-card license-good">
+            <h3>✓ CC BY</h3>
+            <p>Pódese reutilizar e adaptar sempre que se dea crédito á persoa creadora e se indique a licenza.</p>
+          </div>
+          <div class="license-card license-care">
+            <h3>△ NC ou SA</h3>
+            <p><strong>NC</strong> limita o uso ao non comercial. <strong>SA</strong> pode obrigar a compartir adaptacións baixo a mesma licenza. Le as condicións antes de usar a obra.</p>
+          </div>
+          <div class="license-card license-stop">
+            <h3>! ND</h3>
+            <p>As licenzas con <strong>ND (Sen obras derivadas)</strong> non permiten compartir adaptacións. Para evitar dúbidas, recomendamos non empregar música con ND.</p>
+          </div>
+        </div>
+        <a class="help-link" href="https://creativecommons.org/share-your-work/cclicenses/?lang=es" target="_blank" rel="noopener">Ver as licenzas Creative Commons ↗</a>
+      </details>
+
+      <h3 style="margin-top:24px">✍️ Se empregas outras fontes, que tes que anotar?</h3>
+      <p>No apartado 3 do formulario pediremos os créditos cando uses materiais alleos procedentes doutras fontes. Para cada música, efecto ou material, garda:</p>
       <ul class="mini-checklist">
-        <li><strong>Título</strong> da obra ou pista, se consta.</li>
+        <li><strong>Título</strong> da obra ou pista.</li>
         <li><strong>Autor/a ou titular</strong> que debe recibir o crédito.</li>
         <li><strong>Fonte</strong>: ligazón á páxina orixinal da obra.</li>
         <li><strong>Licenza</strong>: nome e versión, por exemplo <em>CC BY 4.0</em>.</li>
         <li><strong>Ligazón á licenza</strong>, cando exista.</li>
-        <li><strong>Cambios realizados</strong>: por exemplo, recorte, fundido, cambio de volume ou mestura con voz.</li>
-        <li>Se a páxina da obra indica unha <strong>forma concreta de atribución</strong>, consérvaa.</li>
+        <li>Se a páxina indica unha <strong>forma concreta de atribución</strong>, respéctaa.</li>
       </ul>
 
-      <p><strong>Exemplo listo para copiar no campo de créditos:</strong></p>
-      <div class="credit-example">«Título da pista» — Nome da persoa autora — https://ligazon-orixinal.example — CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/ — Modificacións: fragmento recortado, volume reducido e fundido de saída.</div>
+      <p><strong>Exemplo con Creative Commons:</strong></p>
+      <div class="credit-example">«Título da pista» — Nome da persoa autora — https://ligazon-orixinal.example — CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/.</div>
 
       <p><strong>Se tes autorización directa da persoa titular dos dereitos:</strong></p>
-      <div class="credit-example">«Título da pista» — Nome da persoa titular — autorización expresa para incorporar e difundir a obra neste podcast, recibida o [data] — Fonte/ligazón: [se existe] — Modificacións: [se as hai].</div>
+      <div class="credit-example">«Título da pista» — Nome da persoa titular — autorización expresa para incorporar e difundir a obra neste podcast, recibida o [data] — Fonte/ligazón: [se existe].</div>
 
       <div class="privacy-tip">
-        <strong>Regra práctica:</strong> se non consegues saber claramente quen é a persoa autora, de onde procede a pista ou que licenza ten, escolle outra. Unha ligazón de descarga ou a simple frase “royalty free” non substitúen unha licenza clara.
+        <strong>Regra práctica:</strong> para facelo fácil, escolle materiais cunha procedencia e licenza claras. Con material propio ou Pixabay tes a opción máis sinxela para este proxecto.
       </div>
     </section>
 
