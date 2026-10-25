@@ -999,6 +999,20 @@ form.addEventListener('submit', (ev) => {
         el.removeAttribute('aria-invalid');
       }
     });
+  
+function abrirProteccionDatos() {
+  if (window.location.hash === "#proteccion-datos") {
+    const apartado = document.getElementById("proteccion-datos");
+    if (apartado) {
+      apartado.open = true;
+      apartado.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+}
+
+window.addEventListener("hashchange", abrirProteccionDatos);
+abrirProteccionDatos();
+
   </script>
 </body>
 </html>
